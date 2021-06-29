@@ -133,9 +133,13 @@
 						return;
 					}
 
-					if (dependency.hasOwnProperty('value') && dependencyValue == dependency.value) {
-						this.dependenciesSatisfied = true;
-						return;
+					if (dependency.hasOwnProperty('values')) {
+						for (let value of dependency.values) {
+							if (dependencyValue == value) {
+								this.dependenciesSatisfied = true;
+								return;
+							}
+						}
 					}
 				}
 
